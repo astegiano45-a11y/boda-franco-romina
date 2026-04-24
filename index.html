@@ -7,316 +7,200 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --white:  #faf8f6;
-  --sand:   #e8d5c4;
-  --mauve:  #b8908a;
-  --rose:   #e8c4c0;
-  --grey:   #b0adb0;
-  --teal:   #4a9ea0;
-  --teal2:  #6bbcbe;
-  --dark:   #2a3535;
-  --text:   #3d3535;
-  --light:  #f5f0ec;
+  --white:#faf8f6;--sand:#e8d5c4;--mauve:#b8908a;--rose:#e8c4c0;
+  --grey:#b0adb0;--teal:#4a9ea0;--teal2:#6bbcbe;--dark:#2a3535;
+  --text:#3d3535;--light:#f5f0ec;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Jost',sans-serif;font-weight:300;background:#0d0b09;color:var(--text);overflow-x:hidden;}
 
-/* ══ VIDEO FONDO FULL ══ */
-.video-section {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.video-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-}
-/* Overlay oscuro encima del video para que el texto se lea bien */
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(13,11,9,0.35) 0%,
-    rgba(13,11,9,0.15) 40%,
-    rgba(13,11,9,0.55) 75%,
-    rgba(13,11,9,0.85) 100%
-  );
-  z-index: 1;
-}
-/* Todo el contenido va sobre el video */
-.video-content {
-  position: relative;
-  z-index: 2;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+/* ══ VIDEO FONDO ══ */
+.video-section{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+.video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,11,9,0.35) 0%,rgba(13,11,9,0.15) 40%,rgba(13,11,9,0.55) 75%,rgba(13,11,9,0.85) 100%);z-index:1;}
+.video-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;}
+.partial-video-section{position:relative;width:100%;overflow:hidden;}
+.partial-video-section .video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.partial-video-section .video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,11,9,0.55),rgba(13,11,9,0.8));z-index:1;}
+.partial-video-section .pvc{position:relative;z-index:2;padding:56px 24px;max-width:480px;margin:0 auto;}
 
 /* ══ HERO ══ */
-#hero {
-  min-height: 100vh;
-}
-.hero-inner {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 40px 28px 60px;
-  text-align: center;
-}
-.hero-eyebrow {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--teal2);
-  margin-bottom: 14px;
-  animation: fadeUp 1s .3s ease both;
-}
-.hero-names {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 14vw, 76px);
-  font-weight: 300;
-  font-style: italic;
-  color: white;
-  line-height: 1.05;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.4);
-  animation: fadeUp 1s .4s ease both;
-}
-.hero-amp { color: var(--rose); margin: 0 6px; font-size: .65em; }
-.hero-divider {
-  width: 50px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-  margin: 18px auto;
-  animation: fadeUp 1s .5s ease both;
-}
-.hero-date {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
-  animation: fadeUp 1s .55s ease both;
-}
-.hero-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  font-style: italic;
-  max-width: 260px;
-  line-height: 1.8;
-  margin-top: 12px;
-  animation: fadeUp 1s .6s ease both;
-}
-.scroll-hint {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  opacity: .4;
-  animation: bounce 2s infinite 2s;
-  color: white;
-}
-.scroll-hint span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; }
+#hero{min-height:100vh;}
+.hero-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:40px 28px 60px;text-align:center;}
+.hero-eyebrow{font-size:10px;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--teal2);margin-bottom:14px;animation:fadeUp 1s .3s ease both;}
+.hero-names{font-family:'Playfair Display',serif;font-size:clamp(48px,14vw,76px);font-weight:300;font-style:italic;color:white;line-height:1.05;text-shadow:0 2px 30px rgba(0,0,0,0.4);animation:fadeUp 1s .4s ease both;}
+.hero-amp{color:var(--rose);margin:0 6px;font-size:.65em;}
+.hero-divider{width:50px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);margin:18px auto;animation:fadeUp 1s .5s ease both;}
+.hero-date{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.65);animation:fadeUp 1s .55s ease both;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.5);font-style:italic;max-width:260px;line-height:1.8;margin-top:12px;animation:fadeUp 1s .6s ease both;}
+.scroll-hint{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:.4;animation:bounce 2s infinite 2s;color:white;}
+.scroll-hint span{font-size:9px;letter-spacing:3px;text-transform:uppercase;}
 
 /* ══ MUSIC PLAYER ══ */
-#music-player {
-  position: fixed; bottom: 20px; right: 16px; z-index: 999;
-  background: rgba(13,11,9,0.92);
-  border: 1px solid rgba(107,188,190,0.3);
-  border-radius: 18px;
-  padding: 14px 16px;
-  width: 230px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-  backdrop-filter: blur(14px);
-  transition: transform .4s cubic-bezier(.4,0,.2,1), opacity .4s ease;
-}
-#music-player.hidden { transform: translateY(130%); opacity: 0; pointer-events: none; }
-.mp-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 3px; }
-.mp-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--teal2); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mp-artist { font-size: 10px; color: rgba(255,255,255,0.3); margin-bottom: 10px; }
-.mp-bar-wrap { height: 3px; background: rgba(255,255,255,0.08); border-radius: 3px; margin-bottom: 12px; cursor: pointer; }
-.mp-fill { height: 100%; background: linear-gradient(90deg, var(--mauve), var(--teal2)); width: 0%; border-radius: 3px; transition: width .4s linear; pointer-events: none; }
-.mp-controls { display: flex; align-items: center; gap: 6px; }
-.mp-btn { background: none; border: none; color: rgba(255,255,255,0.55); cursor: pointer; font-size: 17px; padding: 4px; transition: color .2s; line-height: 1; }
-.mp-btn:hover { color: var(--teal2); }
-.mp-play { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--mauve), var(--teal)); color: white !important; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; border: none; cursor: pointer; transition: transform .2s; }
-.mp-play:hover { transform: scale(1.08); }
-.mp-play.is-playing { animation: playGlow 2s infinite; }
-.mp-dots { display: flex; gap: 5px; margin-left: auto; }
-.mp-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); cursor: pointer; transition: background .2s; }
-.mp-dot.active { background: var(--teal2); }
-#mp-toggle-btn {
-  position: fixed; bottom: 20px; right: 16px; z-index: 1000;
-  width: 50px; height: 50px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--mauve), var(--teal));
-  border: none; cursor: pointer; color: white; font-size: 20px;
-  box-shadow: 0 4px 20px rgba(74,158,160,0.5);
-  display: none; align-items: center; justify-content: center;
-}
-#mp-toggle-btn.show { display: flex; }
+#music-player{position:fixed;bottom:20px;right:16px;z-index:999;background:rgba(13,11,9,0.92);border:1px solid rgba(107,188,190,0.3);border-radius:18px;padding:14px 16px;width:230px;box-shadow:0 8px 32px rgba(0,0,0,0.5);backdrop-filter:blur(14px);transition:transform .4s cubic-bezier(.4,0,.2,1),opacity .4s ease;}
+#music-player.hidden{transform:translateY(130%);opacity:0;pointer-events:none;}
+.mp-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:3px;}
+.mp-title{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--teal2);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mp-artist{font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:10px;}
+.mp-bar-wrap{height:3px;background:rgba(255,255,255,0.08);border-radius:3px;margin-bottom:12px;cursor:pointer;}
+.mp-fill{height:100%;background:linear-gradient(90deg,var(--mauve),var(--teal2));width:0%;border-radius:3px;transition:width .4s linear;pointer-events:none;}
+.mp-controls{display:flex;align-items:center;gap:6px;}
+.mp-btn{background:none;border:none;color:rgba(255,255,255,0.55);cursor:pointer;font-size:17px;padding:4px;transition:color .2s;line-height:1;}
+.mp-btn:hover{color:var(--teal2);}
+.mp-play{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--mauve),var(--teal));color:white !important;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;border:none;cursor:pointer;transition:transform .2s;}
+.mp-play:hover{transform:scale(1.08);}
+.mp-play.is-playing{animation:playGlow 2s infinite;}
+.mp-dots{display:flex;gap:5px;margin-left:auto;}
+.mp-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background .2s;}
+.mp-dot.active{background:var(--teal2);}
+#mp-toggle-btn{position:fixed;bottom:20px;right:16px;z-index:1000;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--mauve),var(--teal));border:none;cursor:pointer;color:white;font-size:20px;box-shadow:0 4px 20px rgba(74,158,160,0.5);display:none;align-items:center;justify-content:center;}
+#mp-toggle-btn.show{display:flex;}
 
-/* ══ SECCIONES NORMALES (sin video) ══ */
-.plain-section { padding: 64px 24px; max-width: 480px; margin: 0 auto; }
-.full-plain { padding: 64px 24px; width: 100%; }
-.full-inner { max-width: 480px; margin: 0 auto; }
+/* ══ TIPOGRAFÍA ══ */
+.section-tag{font-size:10px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--teal2);display:block;margin-bottom:8px;}
+.section-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:300;font-style:italic;color:white;margin-bottom:8px;line-height:1.2;}
+.section-line{width:40px;height:2px;background:linear-gradient(90deg,var(--mauve),var(--teal));border-radius:2px;margin-bottom:28px;}
 
-/* ══ SECCIÓN CON VIDEO PARCIAL ══ */
-.partial-video-section {
-  position: relative;
-  width: 100%;
-  min-height: 520px;
-  overflow: hidden;
-}
-.partial-video-section .video-bg {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-.partial-video-section .video-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(13,11,9,0.5) 0%, rgba(13,11,9,0.7) 100%);
-  z-index: 1;
-}
-.partial-video-section .video-content {
-  position: relative; z-index: 2;
-  padding: 56px 24px;
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-/* ══ TYPOGRAPHY SOBRE VIDEO ══ */
-.on-video .section-tag { color: var(--teal2); }
-.on-video .section-title { color: white; }
-.on-video .section-line { margin-bottom: 28px; }
-
-/* ══ TYPOGRAPHY NORMAL ══ */
-.section-tag { font-size: 10px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 8px; }
-.section-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 300; font-style: italic; color: var(--dark); margin-bottom: 8px; line-height: 1.2; }
-.section-line { width: 40px; height: 2px; background: linear-gradient(90deg, var(--mauve), var(--teal)); border-radius: 2px; margin-bottom: 28px; }
-
-/* ══ CUENTA REGRESIVA ══ */
-#countdown { background: linear-gradient(135deg, var(--dark), #3a4f50); text-align: center; padding: 64px 24px; }
-#countdown .section-tag { color: var(--teal2); }
-#countdown .section-title { color: white; }
-#countdown .section-line { margin: 0 auto 36px; }
-.cd-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; max-width: 380px; margin: 0 auto 28px; }
-.cd-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(107,188,190,0.2); border-radius: 12px; padding: 16px 6px 12px; }
-.cd-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 300; color: var(--teal2); display: block; line-height: 1; }
-.cd-label { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); display: block; margin-top: 6px; }
-.btn-cal { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: white; background: var(--teal); border: none; border-radius: 8px; padding: 12px 20px; cursor: pointer; text-decoration: none; transition: background .3s; }
-.btn-cal:hover { background: var(--teal2); }
+/* ══ COUNTDOWN ══ */
+#countdown{background:linear-gradient(135deg,var(--dark),#3a4f50);text-align:center;padding:64px 24px;}
+#countdown .section-title{color:white;}
+#countdown .section-line{margin:0 auto 36px;}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto 28px;}
+.cd-item{background:rgba(255,255,255,0.06);border:1px solid rgba(107,188,190,0.2);border-radius:12px;padding:16px 6px 12px;}
+.cd-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:300;color:var(--teal2);display:block;line-height:1;}
+.cd-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-top:6px;}
+.btn-cal{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:white;background:var(--teal);border:none;border-radius:8px;padding:12px 20px;cursor:pointer;text-decoration:none;transition:background .3s;}
+.btn-cal:hover{background:var(--teal2);}
 
 /* ══ LUGAR ══ */
-.lugar-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; overflow: hidden; margin-bottom: 16px; backdrop-filter: blur(8px); }
-.lugar-emoji { width: 100%; height: 100px; background: linear-gradient(135deg, rgba(232,213,196,0.2), rgba(74,158,160,0.3)); display: flex; align-items: center; justify-content: center; font-size: 48px; }
-.lugar-body { padding: 18px 20px; }
-.lugar-type { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal2); font-weight: 500; margin-bottom: 5px; }
-.lugar-name { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: white; margin-bottom: 4px; }
-.lugar-addr { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-bottom: 14px; }
-.btn-mapa { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: white; background: var(--teal); border: none; border-radius: 6px; padding: 10px 16px; cursor: pointer; text-decoration: none; transition: background .3s; }
-.btn-mapa:hover { background: var(--teal2); }
+.lugar-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;overflow:hidden;margin-bottom:16px;backdrop-filter:blur(8px);}
+.lugar-img-wrap{width:100%;height:180px;overflow:hidden;position:relative;}
+.lugar-img-wrap img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);}
+.lugar-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,11,9,0.6) 100%);}
+.lugar-body{padding:18px 20px;}
+.lugar-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--teal2);font-weight:500;margin-bottom:5px;}
+.lugar-name{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin-bottom:4px;}
+.lugar-addr{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;margin-bottom:14px;}
+.btn-mapa{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:white;background:var(--teal);border:none;border-radius:6px;padding:10px 16px;cursor:pointer;text-decoration:none;transition:background .3s;}
+.btn-mapa:hover{background:var(--teal2);}
 
-/* ══ TIMELINE SOBRE VIDEO ══ */
-.timeline { position: relative; padding-left: 18px; }
-.timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, rgba(232,196,192,0.6), rgba(107,188,190,0.6)); }
-.tl-item { position: relative; padding: 0 0 24px 26px; }
-.tl-item::before { content: ''; position: absolute; left: -9px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--mauve); border: 2px solid rgba(255,255,255,0.3); }
-.tl-hour { font-size: 10px; font-weight: 500; color: var(--teal2); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 3px; }
-.tl-event { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: white; }
-.tl-desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+/* ══ TIMELINE ══ */
+.timeline{position:relative;padding-left:18px;}
+.timeline::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,rgba(232,196,192,0.6),rgba(107,188,190,0.6));}
+.tl-item{position:relative;padding:0 0 22px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:-9px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--mauve);border:2px solid rgba(255,255,255,0.2);}
+.tl-item.highlight::before{background:var(--teal2);box-shadow:0 0 0 3px rgba(107,188,190,0.3);}
+.tl-item.special::before{background:#d4ac6e;box-shadow:0 0 0 3px rgba(212,172,110,0.3);}
+.tl-hour{font-size:10px;font-weight:500;color:var(--teal2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
+.tl-event{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:white;}
+.tl-desc{font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px;}
 
 /* ══ DRESSCODE ══ */
-#dresscode { background: linear-gradient(160deg, #1a1410, #2a3535); text-align: center; padding: 64px 24px; }
-#dresscode .section-tag { color: var(--teal2); }
-#dresscode .section-title { color: white; }
-#dresscode .section-line { margin: 0 auto 26px; }
-.dress-main { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: white; margin-bottom: 8px; }
-.dress-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 28px; line-height: 1.7; max-width: 320px; margin-left: auto; margin-right: auto; }
-.swatches { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
-.swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.swatch-c { width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.25); box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
-.swatch-l { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-.dress-note { font-size: 12px; color: var(--mauve); font-style: italic; margin-top: 8px; }
+#dresscode{background:linear-gradient(160deg,#1a1410,#2a3535);text-align:center;padding:64px 24px;}
+#dresscode .section-line{margin:0 auto 26px;}
+.dress-main{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:white;margin-bottom:8px;}
+.dress-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:28px;line-height:1.7;max-width:320px;margin-left:auto;margin-right:auto;}
+.swatches{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
+.swatch{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.swatch-c{width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,0.25);box-shadow:0 4px 14px rgba(0,0,0,0.3);}
+.swatch-l{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.dress-note{font-size:12px;color:var(--mauve);font-style:italic;margin-top:8px;}
 
-/* ══ CUOTAS SOBRE VIDEO ══ */
-.cuota-item { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px 16px; margin-bottom: 10px; backdrop-filter: blur(6px); }
-.cuota-n { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 300; color: var(--mauve); min-width: 34px; }
-.cuota-info { flex: 1; }
-.cuota-titulo { font-size: 13px; font-weight: 400; color: white; }
-.cuota-fecha { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; }
-.cuota-monto { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--teal2); font-weight: 300; }
-.badge-ok { display: inline-block; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #6ab87e; border: 1px solid rgba(106,184,126,0.4); border-radius: 20px; padding: 2px 8px; margin-top: 3px; }
+/* ══ CUOTAS EDITABLES ══ */
+.cuota-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;margin-bottom:12px;backdrop-filter:blur(6px);transition:border-color .3s;}
+.cuota-card.pagada{border-color:rgba(106,184,126,0.4);background:rgba(106,184,126,0.06);}
+.cuota-top{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.cuota-n{font-family:'Playfair Display',serif;font-size:28px;font-weight:300;color:var(--mauve);min-width:34px;}
+.cuota-card.pagada .cuota-n{color:#6ab87e;}
+.cuota-info{flex:1;}
+.cuota-titulo{font-size:13px;font-weight:400;color:white;}
+.cuota-vence{font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;}
+.cuota-total{font-family:'Playfair Display',serif;font-size:18px;color:var(--teal2);font-weight:300;text-align:right;}
+.cuota-total span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;}
 
-/* ══ FORMULARIOS ══ */
-.form-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 22px; margin-bottom: 14px; backdrop-filter: blur(8px); }
-.form-card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-style: italic; color: white; margin-bottom: 14px; }
-.form-field { width: 100%; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 14px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: white; background: rgba(255,255,255,0.07); margin-bottom: 10px; outline: none; transition: border-color .3s; }
-.form-field:focus { border-color: var(--teal2); }
-.form-field::placeholder { color: rgba(255,255,255,0.3); }
-textarea.form-field { min-height: 76px; resize: vertical; }
-.btn-wa { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; background: #25D366; color: white; border: none; border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background .3s; margin-top: 4px; text-decoration: none; }
-.btn-wa:hover { background: #1ebd58; }
-.btn-wa.dark { background: #128C7E; }
-.btn-wa.dark:hover { background: #0e7268; }
+/* Fila de controles */
+.cuota-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.cuota-input-wrap{flex:1;min-width:120px;position:relative;}
+.cuota-input-wrap::before{content:'$';position:absolute;left:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);font-size:13px;}
+.cuota-input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:9px 10px 9px 22px;font-family:'Jost',sans-serif;font-size:13px;color:white;outline:none;transition:border-color .3s;}
+.cuota-input:focus{border-color:var(--teal2);}
+.cuota-input::placeholder{color:rgba(255,255,255,0.25);}
+.cuota-check-btn{display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.5);transition:all .3s;white-space:nowrap;}
+.cuota-check-btn:hover{border-color:rgba(106,184,126,0.5);color:#6ab87e;}
+.cuota-check-btn.active{background:rgba(106,184,126,0.15);border-color:rgba(106,184,126,0.5);color:#6ab87e;}
+.cuota-badge{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:4px;}
+.cuota-badge.ok{color:#6ab87e;border:1px solid rgba(106,184,126,0.4);background:rgba(106,184,126,0.08);}
+.cuota-badge.pending{color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.1);}
+
+/* Barra de progreso cuotas */
+.cuotas-progress{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;margin-bottom:20px;}
+.cp-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;}
+.cp-bar-wrap{height:6px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;margin-bottom:8px;}
+.cp-bar-fill{height:100%;background:linear-gradient(90deg,var(--mauve),var(--teal2));border-radius:6px;transition:width .6s ease;}
+.cp-stats{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.4);}
+.cp-stats strong{color:var(--teal2);}
+
+/* ══ FORMS ══ */
+.form-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:22px;margin-bottom:14px;backdrop-filter:blur(8px);}
+.form-card h3{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;color:white;margin-bottom:14px;}
+.form-field{width:100%;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px 14px;font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:white;background:rgba(255,255,255,0.07);margin-bottom:10px;outline:none;transition:border-color .3s;}
+.form-field:focus{border-color:var(--teal2);}
+.form-field::placeholder{color:rgba(255,255,255,0.3);}
+textarea.form-field{min-height:76px;resize:vertical;}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:#25D366;color:white;border:none;border-radius:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:4px;text-decoration:none;}
+.btn-wa:hover{background:#1ebd58;}
+.btn-wa.dark{background:#128C7E;}
+.btn-wa.dark:hover{background:#0e7268;}
 
 /* ══ PLAYLIST ══ */
-.pl-track { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 10px; cursor: pointer; transition: background .2s; }
-.pl-track:hover { background: rgba(255,255,255,0.06); }
-.pl-track.active-track { background: rgba(74,158,160,0.12); border: 1px solid rgba(107,188,190,0.25); }
-.pl-num { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--mauve); min-width: 24px; font-weight: 300; }
-.pl-track.active-track .pl-num { color: var(--teal2); }
-.pl-info { flex: 1; }
-.pl-tname { font-size: 13px; font-weight: 400; color: white; }
-.pl-artist { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 1px; }
-.pl-note { color: var(--teal2); font-size: 16px; opacity: .5; }
-.pl-track.active-track .pl-note { opacity: 1; animation: notePulse 1.5s infinite; }
+.pl-track{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:10px;cursor:pointer;transition:background .2s;}
+.pl-track:hover{background:rgba(255,255,255,0.06);}
+.pl-track.active-track{background:rgba(74,158,160,0.12);border:1px solid rgba(107,188,190,0.25);}
+.pl-num{font-family:'Playfair Display',serif;font-size:18px;color:var(--mauve);min-width:24px;font-weight:300;}
+.pl-track.active-track .pl-num{color:var(--teal2);}
+.pl-info{flex:1;}
+.pl-tname{font-size:13px;font-weight:400;color:white;}
+.pl-artist{font-size:11px;color:rgba(255,255,255,0.35);margin-top:1px;}
+.pl-note{color:var(--teal2);font-size:16px;opacity:.5;}
+.pl-track.active-track .pl-note{opacity:1;animation:notePulse 1.5s infinite;}
 
 /* ══ CONFIRMACIÓN ══ */
-#confirmacion { background: linear-gradient(160deg, var(--dark), #3a4f50); color: white; text-align: center; padding: 64px 24px; }
-#confirmacion .section-tag { color: var(--teal2); }
-#confirmacion .section-title { color: white; }
-#confirmacion .section-line { margin: 0 auto 28px; }
-.asist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; max-width: 400px; margin-left: auto; margin-right: auto; }
-.asist-btn { padding: 13px; border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.6); transition: all .3s; }
-.asist-btn.selected, .asist-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
-.conf-field { width: 100%; max-width: 400px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 14px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: white; background: rgba(255,255,255,0.07); margin-bottom: 10px; outline: none; transition: border-color .3s; display: block; margin-left: auto; margin-right: auto; }
-.conf-field:focus { border-color: var(--teal2); }
-.conf-field::placeholder { color: rgba(255,255,255,0.3); }
-textarea.conf-field { min-height: 76px; resize: none; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; justify-content: center; }
-.chip { padding: 6px 14px; border-radius: 20px; font-size: 11px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); cursor: pointer; transition: all .3s; background: transparent; }
-.chip.selected, .chip:hover { background: var(--mauve); color: white; border-color: var(--mauve); }
-.conf-nota { font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 16px; font-style: italic; }
-.wa-btns { display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto; }
+#confirmacion{background:linear-gradient(160deg,var(--dark),#3a4f50);color:white;text-align:center;padding:64px 24px;}
+#confirmacion .section-title{color:white;}
+#confirmacion .section-line{margin:0 auto 28px;}
+.asist-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;max-width:400px;margin-left:auto;margin-right:auto;}
+.asist-btn{padding:13px;border-radius:8px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.6);transition:all .3s;}
+.asist-btn.selected,.asist-btn:hover{background:var(--teal);color:white;border-color:var(--teal);}
+.conf-field{width:100%;max-width:400px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px 14px;font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:white;background:rgba(255,255,255,0.07);margin-bottom:10px;outline:none;transition:border-color .3s;display:block;margin-left:auto;margin-right:auto;}
+.conf-field:focus{border-color:var(--teal2);}
+.conf-field::placeholder{color:rgba(255,255,255,0.3);}
+textarea.conf-field{min-height:76px;resize:none;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;justify-content:center;}
+.chip{padding:6px 14px;border-radius:20px;font-size:11px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);cursor:pointer;transition:all .3s;background:transparent;}
+.chip.selected,.chip:hover{background:var(--mauve);color:white;border-color:var(--mauve);}
+.conf-nota{font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:16px;font-style:italic;}
+.wa-btns{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto;}
 
 /* ══ FOOTER ══ */
-footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center; padding: 32px 24px; font-size: 11px; letter-spacing: 1px; }
-.f-names { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: rgba(255,255,255,0.3); margin-bottom: 8px; }
+footer{background:#0d0b09;color:rgba(255,255,255,0.25);text-align:center;padding:32px 24px;font-size:11px;letter-spacing:1px;}
+.f-names{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;color:rgba(255,255,255,0.3);margin-bottom:8px;}
 
 /* ══ ANIMACIONES ══ */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-@keyframes notePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.3); } }
-@keyframes playGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(74,158,160,0.4); } 50% { box-shadow: 0 0 0 8px rgba(74,158,160,0); } }
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+@keyframes notePulse{0%,100%{transform:scale(1);}50%{transform:scale(1.3);}}
+@keyframes playGlow{0%,100%{box-shadow:0 0 0 0 rgba(74,158,160,0.4);}50%{box-shadow:0 0 0 8px rgba(74,158,160,0);}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+.full-plain{padding:64px 24px;width:100%;}
+.full-inner{max-width:480px;margin:0 auto;}
 </style>
 </head>
 <body>
 
-<!-- ══ AUDIO ══ -->
 <audio id="audio-0" src="Stayin__Alive__Gospel___Choir_.mp3" preload="metadata"></audio>
 <audio id="audio-1" src="Stand_By_Me_-_Music_Travel_Love__At_Al_Ain_.mp3" preload="metadata"></audio>
 
@@ -335,7 +219,7 @@ footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center;
 </div>
 <button id="mp-toggle-btn" onclick="togglePlayerUI()">🎵</button>
 
-<!-- ══════ HERO — VIDEO 5 DE FONDO ══════ -->
+<!-- ══ HERO ══ -->
 <section id="hero" class="video-section">
   <video class="video-bg" src="Yellow_Simple_IU_UX_Design_App__5_.mp4" autoplay muted loop playsinline></video>
   <div class="video-overlay"></div>
@@ -351,7 +235,7 @@ footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center;
   </div>
 </section>
 
-<!-- ══ CUENTA REGRESIVA ══ -->
+<!-- ══ COUNTDOWN ══ -->
 <div id="countdown">
   <span class="section-tag">⏳ faltan...</span>
   <h2 class="section-title">Nuestra Fecha</h2>
@@ -369,61 +253,89 @@ footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center;
 <div class="partial-video-section reveal">
   <video class="video-bg" src="Yellow_Simple_IU_UX_Design_App__5_.mp4" autoplay muted loop playsinline></video>
   <div class="video-overlay"></div>
-  <div class="video-content">
-    <div class="partial-video-section" style="position:static;min-height:unset;">
-      <div style="padding:56px 24px;max-width:480px;margin:0 auto;">
-        <span class="section-tag" style="color:var(--teal2);">📍 dónde</span>
-        <h2 class="section-title" style="color:white;">El gran día</h2>
-        <div class="section-line"></div>
-        <div class="lugar-card">
-          <div class="lugar-emoji">🌊🌴</div>
-          <div class="lugar-body">
-            <div class="lugar-type">Ceremonia · Celebración</div>
-            <div class="lugar-name">Playa del Caribe · Punta Cana</div>
-            <div class="lugar-addr">República Dominicana<br>Febrero 2027 · Horario a confirmar</div>
-            <a class="btn-mapa" href="https://maps.app.goo.gl/PuntaCana" target="_blank">📍 Ver en mapa</a>
-          </div>
-        </div>
-        <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;font-style:italic;margin-top:6px;">* Ubicación exacta se confirma próximamente</p>
+  <div class="pvc">
+    <span class="section-tag">📍 dónde</span>
+    <h2 class="section-title">El gran día</h2>
+    <div class="section-line"></div>
+    <div class="lugar-card">
+      <!-- Imagen real del Caribe desde Unsplash (libre de derechos) -->
+      <div class="lugar-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
+          alt="Playa del Caribe Punta Cana"
+          onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#4a9ea0,#e8d5c4);display:flex;align-items:center;justify-content:center;font-size:48px;\'>🌊🌴</div>'"
+        >
+        <div class="lugar-img-overlay"></div>
+      </div>
+      <div class="lugar-body">
+        <div class="lugar-type">Ceremonia · Celebración</div>
+        <div class="lugar-name">Playa del Caribe · Punta Cana</div>
+        <div class="lugar-addr">República Dominicana<br>Febrero 2027 · Horario a confirmar</div>
+        <a class="btn-mapa" href="https://maps.app.goo.gl/PuntaCana" target="_blank">📍 Ver en mapa</a>
       </div>
     </div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;font-style:italic;margin-top:6px;">* Ubicación exacta se confirma próximamente</p>
   </div>
 </div>
 
-<!-- ══════ CRONOGRAMA — VIDEO 6 DE FONDO ══════ -->
-<div class="partial-video-section reveal" style="min-height:auto;">
+<!-- ══ CRONOGRAMA — 8 días — VIDEO 6 ══ -->
+<div class="partial-video-section reveal">
   <video class="video-bg" src="Yellow_Simple_IU_UX_Design_App__6_.mp4" autoplay muted loop playsinline></video>
   <div class="video-overlay"></div>
-  <div class="video-content" style="position:relative;z-index:2;padding:56px 24px;max-width:480px;margin:0 auto;">
-    <span class="section-tag" style="color:var(--teal2);">🗓 itinerario</span>
-    <h2 class="section-title" style="color:white;">Calendario de actividades</h2>
+  <div class="pvc">
+    <span class="section-tag">🗓 itinerario</span>
+    <h2 class="section-title">Calendario de actividades</h2>
     <div class="section-line"></div>
     <div class="timeline">
+
       <div class="tl-item">
-        <div class="tl-hour">Día 1</div>
-        <div class="tl-event">Llegada al destino 🛬</div>
-        <div class="tl-desc">Check-in · Tarde de playa libre</div>
+        <div class="tl-hour">Día 1 · Llegada</div>
+        <div class="tl-event">¡Aterrizamos en el Caribe! 🛬</div>
+        <div class="tl-desc">Check-in hotel · Tarde libre · Primer atardecer</div>
       </div>
+
       <div class="tl-item">
-        <div class="tl-hour">Día 2 · La Boda</div>
-        <div class="tl-event">Ceremonia en la playa 💍</div>
-        <div class="tl-desc">Al atardecer · Hora a confirmar</div>
+        <div class="tl-hour">Día 2 · Exploración</div>
+        <div class="tl-event">Conociendo Punta Cana 🌴</div>
+        <div class="tl-desc">Playa · Actividades grupales · Cena de bienvenida</div>
       </div>
+
+      <div class="tl-item special">
+        <div class="tl-hour">Día 3 · ¡La noche!</div>
+        <div class="tl-event">Despedida de solteros 🥂🎉</div>
+        <div class="tl-desc">Franco y Romina celebran por separado · ¡Noche épica!</div>
+      </div>
+
       <div class="tl-item">
-        <div class="tl-hour">Noche</div>
-        <div class="tl-event">Celebración & Fiesta 🎉</div>
-        <div class="tl-desc">Cena · Baile · Noche caribeña</div>
+        <div class="tl-hour">Día 4 · Relax</div>
+        <div class="tl-event">Día de playa y relax 🤿</div>
+        <div class="tl-desc">Snorkel · Deportes acuáticos · Spa</div>
       </div>
+
+      <div class="tl-item highlight">
+        <div class="tl-hour">Día 5 · ¡La Boda! 💍</div>
+        <div class="tl-event">Ceremonia al atardecer</div>
+        <div class="tl-desc">Ceremonia en la playa · Cena de gala · Baile toda la noche 🌙</div>
+      </div>
+
       <div class="tl-item">
-        <div class="tl-hour">Días siguientes</div>
-        <div class="tl-event">Actividades grupales 🤿</div>
-        <div class="tl-desc">Excursiones · Playa · Relax</div>
+        <div class="tl-hour">Día 6 · Festejo</div>
+        <div class="tl-event">El día después 🌅</div>
+        <div class="tl-desc">Brunch · Excursión · Tarde libre</div>
       </div>
+
       <div class="tl-item">
-        <div class="tl-hour">Último día</div>
-        <div class="tl-event">Regreso 🛫</div>
-        <div class="tl-desc">Check-out · Vuelo de regreso</div>
+        <div class="tl-hour">Día 7 · Último día</div>
+        <div class="tl-event">Despedida del paraíso 🌊</div>
+        <div class="tl-desc">Playa · Compras · Cena de despedida grupal</div>
       </div>
+
+      <div class="tl-item">
+        <div class="tl-hour">Día 8 · Regreso</div>
+        <div class="tl-event">Hasta la próxima aventura 🛫</div>
+        <div class="tl-desc">Check-out · Vuelo de regreso · ¡Con el corazón lleno!</div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -445,43 +357,122 @@ footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center;
   <p class="dress-note">✦ El blanco queda reservado para la novia ✦</p>
 </div>
 
-<!-- ══════ CUOTAS — VIDEO 9 DE FONDO ══════ -->
-<div class="partial-video-section reveal" style="min-height:auto;">
+<!-- ══ CUOTAS EDITABLES — VIDEO 9 ══ -->
+<div class="partial-video-section reveal">
   <video class="video-bg" src="Yellow_Simple_IU_UX_Design_App__9_.mp4" autoplay muted loop playsinline></video>
   <div class="video-overlay"></div>
-  <div class="video-content" style="position:relative;z-index:2;padding:56px 24px;max-width:480px;margin:0 auto;">
-    <span class="section-tag" style="color:var(--teal2);">💳 viaje</span>
-    <h2 class="section-title" style="color:white;">Plan de cuotas</h2>
+  <div class="pvc">
+    <span class="section-tag">💳 viaje</span>
+    <h2 class="section-title">Plan de cuotas</h2>
     <div class="section-line"></div>
-    <div class="cuota-item">
-      <div class="cuota-n">01</div>
-      <div class="cuota-info"><div class="cuota-titulo">Reserva inicial</div><div class="cuota-fecha">Vencimiento a confirmar</div><span class="badge-ok">✓ Pagada</span></div>
-      <div class="cuota-monto">$——</div>
+
+    <!-- Barra de progreso general -->
+    <div class="cuotas-progress">
+      <div class="cp-label">progreso de pago</div>
+      <div class="cp-bar-wrap"><div class="cp-bar-fill" id="progress-bar" style="width:0%"></div></div>
+      <div class="cp-stats">
+        <span>Pagado: <strong id="total-pagado">$0</strong></span>
+        <span id="cuotas-ok">0 de 4 cuotas</span>
+      </div>
     </div>
-    <div class="cuota-item">
-      <div class="cuota-n">02</div>
-      <div class="cuota-info"><div class="cuota-titulo">Segunda cuota</div><div class="cuota-fecha">Vencimiento a confirmar</div></div>
-      <div class="cuota-monto">$——</div>
+
+    <!-- Cuota 1 -->
+    <div class="cuota-card" id="card-0">
+      <div class="cuota-top">
+        <div class="cuota-n">01</div>
+        <div class="cuota-info">
+          <div class="cuota-titulo">Reserva inicial</div>
+          <div class="cuota-vence">Vto. a confirmar</div>
+        </div>
+        <div class="cuota-total">
+          <span>total</span>
+          $——
+        </div>
+      </div>
+      <div class="cuota-controls">
+        <div class="cuota-input-wrap">
+          <input class="cuota-input" id="input-0" type="number" placeholder="Monto pagado" oninput="actualizarCuota(0)">
+        </div>
+        <button class="cuota-check-btn" id="btn-0" onclick="togglePagada(0)">✓ Pagada</button>
+        <span class="cuota-badge pending" id="badge-0">pendiente</span>
+      </div>
     </div>
-    <div class="cuota-item">
-      <div class="cuota-n">03</div>
-      <div class="cuota-info"><div class="cuota-titulo">Tercera cuota</div><div class="cuota-fecha">Vencimiento a confirmar</div></div>
-      <div class="cuota-monto">$——</div>
+
+    <!-- Cuota 2 -->
+    <div class="cuota-card" id="card-1">
+      <div class="cuota-top">
+        <div class="cuota-n">02</div>
+        <div class="cuota-info">
+          <div class="cuota-titulo">Segunda cuota</div>
+          <div class="cuota-vence">Vto. a confirmar</div>
+        </div>
+        <div class="cuota-total">
+          <span>total</span>
+          $——
+        </div>
+      </div>
+      <div class="cuota-controls">
+        <div class="cuota-input-wrap">
+          <input class="cuota-input" id="input-1" type="number" placeholder="Monto pagado" oninput="actualizarCuota(1)">
+        </div>
+        <button class="cuota-check-btn" id="btn-1" onclick="togglePagada(1)">✓ Pagada</button>
+        <span class="cuota-badge pending" id="badge-1">pendiente</span>
+      </div>
     </div>
-    <div class="cuota-item">
-      <div class="cuota-n">04</div>
-      <div class="cuota-info"><div class="cuota-titulo">Saldo final</div><div class="cuota-fecha">Vencimiento a confirmar</div></div>
-      <div class="cuota-monto">$——</div>
+
+    <!-- Cuota 3 -->
+    <div class="cuota-card" id="card-2">
+      <div class="cuota-top">
+        <div class="cuota-n">03</div>
+        <div class="cuota-info">
+          <div class="cuota-titulo">Tercera cuota</div>
+          <div class="cuota-vence">Vto. a confirmar</div>
+        </div>
+        <div class="cuota-total">
+          <span>total</span>
+          $——
+        </div>
+      </div>
+      <div class="cuota-controls">
+        <div class="cuota-input-wrap">
+          <input class="cuota-input" id="input-2" type="number" placeholder="Monto pagado" oninput="actualizarCuota(2)">
+        </div>
+        <button class="cuota-check-btn" id="btn-2" onclick="togglePagada(2)">✓ Pagada</button>
+        <span class="cuota-badge pending" id="badge-2">pendiente</span>
+      </div>
     </div>
-    <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:10px;font-style:italic;">* Montos y fechas se actualizarán próximamente</p>
+
+    <!-- Cuota 4 -->
+    <div class="cuota-card" id="card-3">
+      <div class="cuota-top">
+        <div class="cuota-n">04</div>
+        <div class="cuota-info">
+          <div class="cuota-titulo">Saldo final</div>
+          <div class="cuota-vence">Vto. a confirmar</div>
+        </div>
+        <div class="cuota-total">
+          <span>total</span>
+          $——
+        </div>
+      </div>
+      <div class="cuota-controls">
+        <div class="cuota-input-wrap">
+          <input class="cuota-input" id="input-3" type="number" placeholder="Monto pagado" oninput="actualizarCuota(3)">
+        </div>
+        <button class="cuota-check-btn" id="btn-3" onclick="togglePagada(3)">✓ Pagada</button>
+        <span class="cuota-badge pending" id="badge-3">pendiente</span>
+      </div>
+    </div>
+
+    <p style="font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:10px;font-style:italic;">* Tu progreso se guarda automáticamente en este dispositivo</p>
   </div>
 </div>
 
 <!-- ══ PLAYLIST ══ -->
 <div class="full-plain reveal" style="background:linear-gradient(160deg,#1a1410,#2a3535);">
   <div class="full-inner">
-    <span class="section-tag" style="color:var(--teal2);">🎵 música</span>
-    <h2 class="section-title" style="color:white;">Nuestra playlist</h2>
+    <span class="section-tag">🎵 música</span>
+    <h2 class="section-title">Nuestra playlist</h2>
     <div class="section-line"></div>
     <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px 16px;margin-bottom:16px;">
       <p style="font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">tocá para reproducir</p>
@@ -513,8 +504,8 @@ footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center;
 <!-- ══ BUZÓN ══ -->
 <div class="full-plain reveal" style="background:linear-gradient(160deg,#2a3535,#1a1410);">
   <div class="full-inner">
-    <span class="section-tag" style="color:var(--teal2);">💌 deseos</span>
-    <h2 class="section-title" style="color:white;">Buzón de deseos</h2>
+    <span class="section-tag">💌 deseos</span>
+    <h2 class="section-title">Buzón de deseos</h2>
     <div class="section-line"></div>
     <div class="form-card">
       <h3>Dejanos tu mensaje 🤍</h3>
@@ -569,109 +560,83 @@ footer { background: #0d0b09; color: rgba(255,255,255,0.25); text-align: center;
 </footer>
 
 <script>
-const WA_FRANCO = '5429646298';
-const WA_ROMINA = '5492964415541';
+const WA_FRANCO='5429646298', WA_ROMINA='5492964415541';
+
+/* ══ CUOTAS EDITABLES con localStorage ══ */
+const cuotasState = JSON.parse(localStorage.getItem('cuotas_fr') || '[{},{},{},{}]');
+
+function actualizarCuota(i) {
+  cuotasState[i].monto = parseFloat(document.getElementById('input-'+i).value) || 0;
+  guardarYrefrescar();
+}
+
+function togglePagada(i) {
+  cuotasState[i].pagada = !cuotasState[i].pagada;
+  if (cuotasState[i].pagada && !cuotasState[i].monto) {
+    cuotasState[i].monto = 0;
+  }
+  guardarYrefrescar();
+}
+
+function guardarYrefrescar() {
+  localStorage.setItem('cuotas_fr', JSON.stringify(cuotasState));
+  let totalPagado = 0, cuotasOk = 0;
+  cuotasState.forEach((c, i) => {
+    const pagada = !!c.pagada;
+    const monto  = c.monto || 0;
+    if (monto > 0) document.getElementById('input-'+i).value = monto;
+    document.getElementById('card-'+i).classList.toggle('pagada', pagada);
+    document.getElementById('btn-'+i).classList.toggle('active', pagada);
+    const badge = document.getElementById('badge-'+i);
+    if (pagada) {
+      badge.className = 'cuota-badge ok';
+      badge.textContent = '✓ pagada';
+      cuotasOk++;
+    } else {
+      badge.className = 'cuota-badge pending';
+      badge.textContent = 'pendiente';
+    }
+    if (pagada) totalPagado += monto;
+  });
+  document.getElementById('total-pagado').textContent = '$' + totalPagado.toLocaleString('es-AR');
+  document.getElementById('cuotas-ok').textContent = cuotasOk + ' de 4 cuotas';
+  const pct = Math.min(cuotasOk / 4 * 100, 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+guardarYrefrescar(); // cargar estado guardado al inicio
 
 /* ══ MÚSICA ══ */
-const SONGS = [
-  { audioId:'audio-0', title:"Stayin' Alive",  artist:'Gospel Choir'      },
-  { audioId:'audio-1', title:'Stand By Me',    artist:'Music Travel Love' }
-];
-let current=0, isPlaying=false, fillTimer=null;
-function getAudio(i){ return document.getElementById(SONGS[i].audioId); }
-
-function buildDots(){
-  const c=document.getElementById('mp-dots'); c.innerHTML='';
-  SONGS.forEach((_,i)=>{
-    const d=document.createElement('span');
-    d.className='mp-dot'+(i===current?' active':'');
-    d.onclick=()=>playSong(i); c.appendChild(d);
-  });
-}
+const SONGS=[{audioId:'audio-0',title:"Stayin' Alive",artist:'Gospel Choir'},{audioId:'audio-1',title:'Stand By Me',artist:'Music Travel Love'}];
+let current=0,isPlaying=false,fillTimer=null;
+function getAudio(i){return document.getElementById(SONGS[i].audioId);}
+function buildDots(){const c=document.getElementById('mp-dots');c.innerHTML='';SONGS.forEach((_,i)=>{const d=document.createElement('span');d.className='mp-dot'+(i===current?' active':'');d.onclick=()=>playSong(i);c.appendChild(d);});}
 buildDots();
 document.getElementById('mp-toggle-btn').classList.add('show');
-
-function updateUI(){
-  document.getElementById('mp-title').textContent=SONGS[current].title;
-  document.getElementById('mp-artist').textContent=SONGS[current].artist;
-  document.getElementById('mp-fill').style.width='0%';
-  document.querySelectorAll('.mp-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
-  document.querySelectorAll('.pl-track').forEach((t,i)=>t.classList.toggle('active-track',i===current));
-}
-
-function startFill(){
-  clearInterval(fillTimer);
-  fillTimer=setInterval(()=>{
-    const a=getAudio(current);
-    if(a.duration) document.getElementById('mp-fill').style.width=(a.currentTime/a.duration*100)+'%';
-  },500);
-}
-
-function playSong(idx){
-  getAudio(current).pause(); getAudio(current).currentTime=0;
-  current=idx; updateUI();
-  const a=getAudio(current);
-  a.play().then(()=>{ isPlaying=true; document.getElementById('mp-play').textContent='⏸'; document.getElementById('mp-play').classList.add('is-playing'); startFill(); }).catch(()=>{});
-  a.onended=()=>playSong((current+1)%SONGS.length);
-}
-
-function togglePlay(){
-  const a=getAudio(current);
-  if(isPlaying){ a.pause(); isPlaying=false; document.getElementById('mp-play').textContent='▶'; document.getElementById('mp-play').classList.remove('is-playing'); clearInterval(fillTimer); }
-  else{ a.play().then(()=>{ isPlaying=true; document.getElementById('mp-play').textContent='⏸'; document.getElementById('mp-play').classList.add('is-playing'); startFill(); }).catch(()=>{}); }
-}
-function nextSong(){ playSong((current+1)%SONGS.length); }
-function prevSong(){ playSong((current-1+SONGS.length)%SONGS.length); }
-function seekAudio(e){
-  const a=getAudio(current); if(!a.duration) return;
-  const r=document.getElementById('mp-bar').getBoundingClientRect();
-  a.currentTime=((e.clientX-r.left)/r.width)*a.duration;
-}
+function updateUI(){document.getElementById('mp-title').textContent=SONGS[current].title;document.getElementById('mp-artist').textContent=SONGS[current].artist;document.getElementById('mp-fill').style.width='0%';document.querySelectorAll('.mp-dot').forEach((d,i)=>d.classList.toggle('active',i===current));document.querySelectorAll('.pl-track').forEach((t,i)=>t.classList.toggle('active-track',i===current));}
+function startFill(){clearInterval(fillTimer);fillTimer=setInterval(()=>{const a=getAudio(current);if(a.duration)document.getElementById('mp-fill').style.width=(a.currentTime/a.duration*100)+'%';},500);}
+function playSong(idx){getAudio(current).pause();getAudio(current).currentTime=0;current=idx;updateUI();const a=getAudio(current);a.play().then(()=>{isPlaying=true;document.getElementById('mp-play').textContent='⏸';document.getElementById('mp-play').classList.add('is-playing');startFill();}).catch(()=>{});a.onended=()=>playSong((current+1)%SONGS.length);}
+function togglePlay(){const a=getAudio(current);if(isPlaying){a.pause();isPlaying=false;document.getElementById('mp-play').textContent='▶';document.getElementById('mp-play').classList.remove('is-playing');clearInterval(fillTimer);}else{a.play().then(()=>{isPlaying=true;document.getElementById('mp-play').textContent='⏸';document.getElementById('mp-play').classList.add('is-playing');startFill();}).catch(()=>{});}}
+function nextSong(){playSong((current+1)%SONGS.length);}
+function prevSong(){playSong((current-1+SONGS.length)%SONGS.length);}
+function seekAudio(e){const a=getAudio(current);if(!a.duration)return;const r=document.getElementById('mp-bar').getBoundingClientRect();a.currentTime=((e.clientX-r.left)/r.width)*a.duration;}
 let playerVisible=true;
-function togglePlayerUI(){ playerVisible=!playerVisible; document.getElementById('music-player').classList.toggle('hidden',!playerVisible); }
+function togglePlayerUI(){playerVisible=!playerVisible;document.getElementById('music-player').classList.toggle('hidden',!playerVisible);}
 
 /* ══ COUNTDOWN ══ */
 const BODA=new Date('2027-02-14T18:00:00');
-function tick(){
-  const d=BODA-new Date(); if(d<=0) return;
-  document.getElementById('cd-d').textContent=String(Math.floor(d/86400000)).padStart(2,'0');
-  document.getElementById('cd-h').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-s').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');
-}
-tick(); setInterval(tick,1000);
+function tick(){const d=BODA-new Date();if(d<=0)return;document.getElementById('cd-d').textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById('cd-h').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');document.getElementById('cd-m').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');document.getElementById('cd-s').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');}
+tick();setInterval(tick,1000);
 
 /* ══ FORMS ══ */
 let asistencia='';
-function selAsist(v){ asistencia=v; document.getElementById('btn-si').classList.toggle('selected',v==='si'); document.getElementById('btn-no').classList.toggle('selected',v==='no'); }
-function toggleChip(el){ el.classList.toggle('selected'); }
-function confirmar(quien,e){
-  e.preventDefault();
-  const nombre=document.getElementById('conf-nombre').value.trim();
-  const msg=document.getElementById('conf-msg').value.trim();
-  const dietas=[...document.querySelectorAll('.chip.selected')].map(c=>c.textContent).join(', ');
-  if(!nombre){ alert('Por favor ingresá tu nombre'); return; }
-  const at=asistencia==='si'?'✅ SÍ asistiré':asistencia==='no'?'❌ NO podré ir':'(sin confirmar)';
-  let txt=`🌴 *Boda Franco & Romina · Feb 2027*\n\n${at}\n👤 *Nombre:* ${nombre}`;
-  if(dietas) txt+=`\n🍽️ *Dieta:* ${dietas}`;
-  if(msg) txt+=`\n💬 *Mensaje:* ${msg}`;
-  window.open(`https://wa.me/${quien==='franco'?WA_FRANCO:WA_ROMINA}?text=${encodeURIComponent(txt)}`,'_blank');
-}
-function enviarPlaylist(e){
-  e.preventDefault();
-  const n=document.getElementById('pl-nombre').value.trim(), c=document.getElementById('pl-cancion').value.trim();
-  if(!n||!c){ alert('Completá tu nombre y la canción'); return; }
-  window.open(`https://wa.me/${WA_FRANCO}?text=${encodeURIComponent('🎵 *Sugerencia · Boda Franco & Romina*\n👤 '+n+'\n🎶 '+c)}`,'_blank');
-}
-function enviarBuzon(e){
-  e.preventDefault();
-  const n=document.getElementById('bz-nombre').value.trim(), m=document.getElementById('bz-mensaje').value.trim();
-  if(!n||!m){ alert('Completá tu nombre y tu mensaje'); return; }
-  window.open(`https://wa.me/${WA_ROMINA}?text=${encodeURIComponent('💌 *Buzón de deseos · Boda Franco & Romina*\n👤 '+n+'\n✨ '+m)}`,'_blank');
-}
+function selAsist(v){asistencia=v;document.getElementById('btn-si').classList.toggle('selected',v==='si');document.getElementById('btn-no').classList.toggle('selected',v==='no');}
+function toggleChip(el){el.classList.toggle('selected');}
+function confirmar(quien,e){e.preventDefault();const nombre=document.getElementById('conf-nombre').value.trim(),msg=document.getElementById('conf-msg').value.trim(),dietas=[...document.querySelectorAll('.chip.selected')].map(c=>c.textContent).join(', ');if(!nombre){alert('Por favor ingresá tu nombre');return;}const at=asistencia==='si'?'✅ SÍ asistiré':asistencia==='no'?'❌ NO podré ir':'(sin confirmar)';let txt=`🌴 *Boda Franco & Romina · Feb 2027*\n\n${at}\n👤 *Nombre:* ${nombre}`;if(dietas)txt+=`\n🍽️ *Dieta:* ${dietas}`;if(msg)txt+=`\n💬 *Mensaje:* ${msg}`;window.open(`https://wa.me/${quien==='franco'?WA_FRANCO:WA_ROMINA}?text=${encodeURIComponent(txt)}`,'_blank');}
+function enviarPlaylist(e){e.preventDefault();const n=document.getElementById('pl-nombre').value.trim(),c=document.getElementById('pl-cancion').value.trim();if(!n||!c){alert('Completá tu nombre y la canción');return;}window.open(`https://wa.me/${WA_FRANCO}?text=${encodeURIComponent('🎵 *Sugerencia · Boda Franco & Romina*\n👤 '+n+'\n🎶 '+c)}`,'_blank');}
+function enviarBuzon(e){e.preventDefault();const n=document.getElementById('bz-nombre').value.trim(),m=document.getElementById('bz-mensaje').value.trim();if(!n||!m){alert('Completá tu nombre y tu mensaje');return;}window.open(`https://wa.me/${WA_ROMINA}?text=${encodeURIComponent('💌 *Buzón de deseos · Boda Franco & Romina*\n👤 '+n+'\n✨ '+m)}`,'_blank');}
 
 /* ══ REVEAL ══ */
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }),{threshold:.08});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
